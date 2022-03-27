@@ -1,0 +1,19 @@
+{{/* boolean feature tags */}}
+{{- $roam:= false -}}{{/* true if this machine is a laptop on corp */}}
+{{- $work:= false -}}{{/* true if this machine is on corp */}}
+
+{{- if contains ".google" .chezmoi.fqdnHostname -}}
+  {{- $work = true -}}
+  {{- if contains ".roam." .chezmoi.fqdnHostname -}}
+    {{- $roam = true -}}
+  {{- end -}}
+{{- end -}}
+
+[data]
+    work = {{ $work}}
+    roam = {{ $roam }}
+
+[git]
+    autoCommit = true
+    autoPush = true
+

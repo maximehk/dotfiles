@@ -1,0 +1,5 @@
+{{- if not .work -}}
+#!/bin/bash
+
+sudo chsh -s $(which zsh) ${USER}
+{{- end -}}

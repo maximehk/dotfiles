@@ -1,0 +1,11 @@
+{{ if and (eq .chezmoi.os "linux") (.work)  -}}
+#!/bin/sh
+
+sudo glinux-add-repo gosso stable
+sudo apt-get update
+
+sudo apt-get install -y \
+   git-remote-google \
+   gosso
+
+{{ end -}}

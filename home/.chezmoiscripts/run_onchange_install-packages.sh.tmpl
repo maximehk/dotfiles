@@ -1,0 +1,6 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+
+sudo apt-get update
+sudo apt-get install -y bzip2 curl detox git htop jq mc mplayer moreutils myrepos ncdu nmap perl tcpdump tcpreplay terminator tmux tree unzip vcsh vim zip zsh
+{{ end -}}
