@@ -1,0 +1,14 @@
+{{- if .desktop -}}
+
+{{- if .work -}}
+#!/bin/bash
+
+sudo glinux-add-repo typescript stable
+sudo apt update
+sudo apt install -y code visual-studio-code-google3
+
+{{- else -}}
+  # TODO: implement vscode install on non-work machines
+{{- end -}}
+
+{{- end -}}

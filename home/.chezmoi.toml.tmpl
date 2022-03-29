@@ -1,4 +1,5 @@
 {{/* boolean feature tags */}}
+{{- $desktop:= false -}}{{/* true if this machine is a desktop */}}
 {{- $roam:= false -}}{{/* true if this machine is a laptop on corp */}}
 {{- $work:= false -}}{{/* true if this machine is on corp */}}
 
@@ -9,9 +10,14 @@
   {{- end -}}
 {{- end -}}
 
+{{- if contains "hacker." .chezmoi.fqdnHostname -}}
+  {{- $desktop = true -}}
+{{- end -}}
+
 [data]
-    work = {{ $work}}
+    desktop = {{ $desktop }}
     roam = {{ $roam }}
+    work = {{ $work }}
 
 [git]
     autoCommit = true
