@@ -70,3 +70,11 @@ set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+
+call plug#begin()
+
+" https://github.com/rust-lang/rust.vim
+Plug 'rust-lang/rust.vim'
+
+call plug#end()
+
