@@ -132,3 +132,8 @@ bindkey '^x^e' edit-command-line
 
 export HISTIGNORE='rm *:svn revert*'
 
+
+if [[ -d $HOME/.cargo/bin ]] ; then
+  export PATH="${PATH}:${HOME}/.cargo/bin"
+
+fi
