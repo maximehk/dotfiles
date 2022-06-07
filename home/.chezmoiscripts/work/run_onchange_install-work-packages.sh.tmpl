@@ -1,13 +1,11 @@
 {{ if and (eq .chezmoi.os "linux") (.work)  -}}
 #!/bin/sh
 
-sudo glinux-add-repo gosso stable sendgmr drive-fs-all
+sudo glinux-add-repo -b gosso stable
+sudo glinux-add-repo -b sendgmr stable
+sudo glinux-add-repo -b drive-fs-all stable
 sudo apt-get update
 
-sudo apt-get install -y \
-   git-remote-google \
-   sendgmr \ 
-   drive-fs \
-   gosso
+sudo apt-get install -y git-remote-google sendgmr drive-fs gosso
 
 {{ end -}}
