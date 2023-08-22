@@ -3,4 +3,5 @@
 
 sudo perl -pane 's/(auth\s+)required(.*)/\1sufficient\2/' /etc/pam.d/chsh
 sudo chsh -s $(which zsh) ${USER}
+
 {{- end -}}
