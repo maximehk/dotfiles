@@ -6,4 +6,4 @@ do
 done
 
 export LESS='-S'          
-
+export EDITOR='vim'
