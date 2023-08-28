@@ -7,7 +7,7 @@ sh -c "$(curl -fsLS chezmoi.io/get)" -- -b "$HOME/.local/bin" init --apply maxim
 
 # OR
 
-sh -c "$(curl -fsLS chezmoi.io/get)" -- -b "$HOME/.local/bin" init --apply git@github.com:maximehk/dotfiles.git
+sh -c "$(curl -fsLS chezmoi.io/get)" -- -b "$HOME/.local/bin" init --ssh --apply maximehk
 
 
 ```
