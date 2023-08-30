@@ -38,3 +38,11 @@ function sony {
 
 br() { xrandr 2> /dev/null | perl -lane 'if (/(\S+) connected/) {print $1}' | xargs -I@ xrandr --output @ --brightness $1 }
 
+
+{{-   if eq .chezmoi.os "darwin" }}
+
+alias chrome='open -a '\''Google Chrome'\'
+
+{{- end }}
+
+
