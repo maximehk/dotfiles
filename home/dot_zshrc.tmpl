@@ -137,3 +137,7 @@ if [[ -d $HOME/.cargo/bin ]] ; then
   export PATH="${PATH}:${HOME}/.cargo/bin"
 
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
+
