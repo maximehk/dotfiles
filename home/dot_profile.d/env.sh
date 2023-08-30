@@ -7,3 +7,10 @@ done
 
 export LESS='-S'          
 
+
+{{-   if eq .chezmoi.os "darwin" }}
+
+chrome='open -a '\''Google Chrome'\'
+
+{{- end }}
+
