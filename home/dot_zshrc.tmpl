@@ -1,5 +1,6 @@
 # ZSHELL config file
 
+
 _init_prompt() {
   autoload -Uz promptinit
   promptinit
@@ -10,8 +11,8 @@ _init_prompt() {
 
 _init_prompt
 
-{{- if eq .chezmoi.os "darwin"  -}}
-prompt redhat
+{{ if eq .chezmoi.os "darwin"  -}}
+prompt restore
 {{ else if .work -}}
 prompt fire
 {{- else -}}
@@ -103,7 +104,7 @@ zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu yes  # always display the menu
 zstyle ':completion:*' menu select=6  # activate selection if more than 6 items
-eval "$(dircolors -b)"
+#eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -139,3 +140,7 @@ if [[ -d $HOME/.cargo/bin ]] ; then
   export PATH="${PATH}:${HOME}/.cargo/bin"
 
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
+
