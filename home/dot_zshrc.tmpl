@@ -11,7 +11,7 @@ _init_prompt() {
 
 _init_prompt
 
-{{- if eq .chezmoi.os "darwin"  -}}
+{{ if eq .chezmoi.os "darwin"  -}}
 prompt redhat
 {{ else if .work -}}
 prompt fire
