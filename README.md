@@ -1,6 +1,5 @@
 # Installation
 
-
 ```shell
 # Install and apply config
 
