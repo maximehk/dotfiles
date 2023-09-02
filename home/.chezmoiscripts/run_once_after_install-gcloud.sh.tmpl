@@ -1,0 +1,10 @@
+{{ if (eq .chezmoi.os "darwin" "linux") -}}
+#!/bin/bash
+
+export INSTALL_SCRIPT="$(mktemp)"
+
+curl -o "${INSTALL_SCRIPT}" "https://sdk.cloud.google.com"
+chmod +x "${INSTALL_SCRIPT}"
+${INSTALL_SCRIPT} --install-dir="$HOME/.local/share" --disable-prompts
+
+{{- end }}

@@ -1,8 +1,9 @@
-{{ if (and (eq .chezmoi.os "darwin" "linux")) -}}
+{{ if (eq .chezmoi.os "darwin" "linux") -}}
 #!/bin/bash
 
 set -eufo pipefail
 
 vim -c PlugInstall
 vim -c PlugUpdate -c qa
-{{ end -}}
+
+{{- end }}
