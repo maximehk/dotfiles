@@ -11,8 +11,8 @@
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
-{{- $has_secrets := (eq .osid "darwin") -}}
-{{- $desktop := (eq .osid "darwin") -}}
+{{- $has_secrets := (eq $osid "darwin") -}}
+{{- $desktop := (eq $osid "darwin") -}}
 
 
 [data]
