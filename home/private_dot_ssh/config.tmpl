@@ -3,5 +3,5 @@ Host *.c.googlers.com
   # Enable persistent connection multiplexing
   ControlMaster auto
   ControlPath ~/.ssh/%r@%h:%p
-  ControlPersist 3600
+  ControlPersist 10800  # 3h
 {{ end }}
