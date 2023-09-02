@@ -1,4 +1,3 @@
-{{ if (eq .chezmoi.os "darwin") -}}
 #!/bin/bash
 
 install_gcloud() {
@@ -23,5 +22,3 @@ install_gcloud() {
 }
 
 install_gcloud
-
-{{- end }}

@@ -1,25 +1,28 @@
 {{/* boolean feature tags */}}
-{{- $desktop:= false -}}{{/* true if this machine is a desktop */}}
-{{- $roam:= false -}}{{/* true if this machine is a laptop on corp */}}
 {{- $work:= false -}}{{/* true if this machine is on corp */}}
+{{- $desktop:= false -}}
 
 {{- if contains ".google" .chezmoi.fqdnHostname -}}
   {{- $work = true -}}
-  {{- if contains ".roam." .chezmoi.fqdnHostname -}}
-    {{- $roam = true -}}
-  {{- end -}}
 {{- end -}}
 
-{{- if contains "hacker." .chezmoi.fqdnHostname -}}
-  {{- $desktop = true -}}
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
+
+{{- $has_secrets := (eq .osid "darwin") -}}
+{{- $desktop := (eq .osid "darwin") -}}
+
 
 [data]
-    desktop = {{ $desktop }}
-    roam = {{ $roam }}
+    osid = {{ $osid | quote }}
+
     work = {{ $work }}
-    install_rust=false
-    install_docker=false
+    desktop = {{ $desktop }}
+    has_secrets = {{ $has_secrets }}
+    install_rust = false
+    install_docker = false
 
 [git]
     autoCommit = true
