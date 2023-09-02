@@ -34,7 +34,6 @@
     os_icon                 # os identifier
     dir                     # current directory
     vcs                     # git status
-    context                 # user@hostname // overriden to `hostname`
     # prompt_char           # prompt symbol
   )
 
@@ -82,7 +81,7 @@
     gcloud                  # google cloud cli account and project (https://cloud.google.com/)
     google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
     toolbox                 # toolbox name (https://github.com/containers/toolbox)
-    # context                 # user@hostname // overriden to `hostname`
+    context                 # user@hostname // overriden to `hostname`
     nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
     ranger                  # ranger shell (https://github.com/ranger/ranger)
     nnn                     # nnn shell (https://github.com/jarun/nnn)
@@ -932,13 +931,13 @@
   typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=3
   typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=0
 
-  # Context format when running with privileges: user@hostname.
+  # Context format when running with privileges: hostname.
   # typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%n@%m'
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%m'  # do not show username
-  # Context format when in SSH without privileges: user@hostname.
-  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%n@%m'
-  # Default context format (no privileges, no SSH): user@hostname.
-  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m'
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%m'
+  # Context format when in SSH without privileges: hostname.
+  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%m'
+  # Default context format (no privileges, no SSH): hostname.
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%m'
 
   # Don't show context unless running with privileges or in SSH.
   # Tip: Remove the next line to always show context.
