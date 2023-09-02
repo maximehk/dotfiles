@@ -19,6 +19,7 @@ install_gcloud() {
     curl -o "${install_script}" "https://sdk.cloud.google.com"
     chmod +x "${install_script}"
     ${install_script} --install-dir="$HOME/.local/share" --disable-prompts
+    rm -f "${install_script}"
 }
 
 install_gcloud
