@@ -1,10 +1,26 @@
 {{ if (eq .chezmoi.os "darwin" "linux") -}}
 #!/bin/bash
 
-export INSTALL_SCRIPT="$(mktemp)"
+install_gcloud() {
 
-curl -o "${INSTALL_SCRIPT}" "https://sdk.cloud.google.com"
-chmod +x "${INSTALL_SCRIPT}"
-${INSTALL_SCRIPT} --install-dir="$HOME/.local/share" --disable-prompts
+    if [ -d "$HOME/.local/share/google-cloud-sdk" ] ; then
+        return
+    fi
+
+    echo ""
+    echo "###################################"
+    echo "### INSTALLING GOOGLE CLOUD CLI ###"
+    echo "###################################"
+    echo ""
+    echo ""
+    
+    local install_script="$(mktemp)"
+
+    curl -o "${install_script}" "https://sdk.cloud.google.com"
+    chmod +x "${install_script}"
+    ${install_script} --install-dir="$HOME/.local/share" --disable-prompts
+}
+
+install_gcloud
 
 {{- end }}
