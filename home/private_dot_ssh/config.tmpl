@@ -4,11 +4,11 @@
 Host *.c.googlers.com
   ControlMaster auto
   ControlPath ~/.ssh/%r@%h:%p
-  ControlPersist 10800  # 3h
+  ControlPersist 10800
 {{ end }}
 
 Host macmini
   # Enable persistent connection multiplexing
   ControlMaster auto
   ControlPath ~/.ssh/%r@%h:%p
-  ControlPersist 10800  # 3h
+  ControlPersist 10800
