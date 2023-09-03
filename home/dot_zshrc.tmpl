@@ -78,6 +78,10 @@ compinit
 bindkey -e  # emacs key bindings
 setopt menucomplete
 
+autoload znt-history-widget
+zle -N znt-history-widget
+bindkey "^R" znt-history-widget
+
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
