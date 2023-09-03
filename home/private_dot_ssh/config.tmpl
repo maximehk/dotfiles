@@ -1,7 +1,13 @@
-{{- if .work -}}
+{{ if .work -}}
 Host *.c.googlers.com
+{{- else -}}
+Host macmini
+{{- end }}
+
   # Enable persistent connection multiplexing
   ControlMaster auto
   ControlPath ~/.ssh/%r@%h:%p
   ControlPersist 10800  # 3h
-{{ end }}
+
+
+
