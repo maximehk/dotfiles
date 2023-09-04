@@ -8,7 +8,7 @@ Host *.c.googlers.com
 {{ end }}
 
 Host macmini
-  # Enable persistent connection multiplexing
+  User max
   ControlMaster auto
   ControlPath ~/.ssh/%r@%h:%p
   ControlPersist 10800
