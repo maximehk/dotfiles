@@ -181,7 +181,7 @@
   # OS identifier color.
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=232
 
-  {{- if and (eq .osid "darwin") .work }}
+  {{ if and (eq .osid "darwin") .work }}
   typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=042
   {{ else if .work }}
   typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=213
