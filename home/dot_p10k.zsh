@@ -20,6 +20,10 @@
 'builtin' 'setopt' 'no_aliases' 'no_sh_glob' 'brace_expand'
 
 () {
+  local work=false
+  if [[ $(hostname) =~ google ]] ; then
+    work=true
+  fi
   emulate -L zsh -o extended_glob
 
   # Unset all configuration options. This allows you to apply configuration changes without
@@ -179,8 +183,14 @@
 
   #################################[ os_icon: os identifier ]##################################
   # OS identifier color.
-  typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=232
-  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=7
+  if $work ; then
+    typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=232
+    typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=198
+  else
+    typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=232
+    typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=7
+  fi
+
   # Custom icon.
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
 
