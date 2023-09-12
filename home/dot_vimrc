@@ -51,7 +51,7 @@ set si "Smart indent
 set wrap "Wrap lines
 
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -81,3 +81,4 @@ Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
+nnoremap ZA :qa!<Enter>
