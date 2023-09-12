@@ -71,6 +71,9 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
 call plug#begin()
 
 " https://github.com/rust-lang/rust.vim
