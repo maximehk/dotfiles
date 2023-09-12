@@ -1,3 +1,5 @@
+{{ if eq .chezmoi.os "darwin" -}}
+
 [General]
 plugin_priority=itemimage, itemencrypted, itemfakevim, itemnotes, itempinned, itemsync, itemtags, itemtext
 
@@ -200,3 +202,5 @@ tool_button_css="\n    ;color: ${fg}\n    ;background: ${bg}\n    ;border: 0\n  
 tool_button_pressed_css="\n    ;background: ${sel_bg}"
 tool_button_selected_css="\n    ;background: ${sel_bg - #222}\n    ;color: ${sel_fg}\n    ;border: 1px solid ${sel_bg}"
 use_system_icons=false
+
+{{- end -}}

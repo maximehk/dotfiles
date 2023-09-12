@@ -1,3 +1,5 @@
+{{ if eq .chezmoi.os "darwin" -}}
+
 [Commands]
 1\Automatic=true
 1\Command=copyq ignore
@@ -54,3 +56,4 @@
 9\IsGlobalShortcut=true
 9\Name=Show/hide main window
 size=9
+{{- end -}}
