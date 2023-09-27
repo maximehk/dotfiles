@@ -1,4 +1,10 @@
 bind C-b detach
+
+{{ if eq .osid "darwin" -}}
+set-option -g default-shell /bin/zsh
+{{- else -}}
 set-option -g default-shell /usr/bin/zsh
+{{- end }}
+
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
 set -g mouse on
