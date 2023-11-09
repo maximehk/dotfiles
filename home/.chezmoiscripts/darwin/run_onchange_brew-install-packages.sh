@@ -8,15 +8,7 @@ brew install \
   htop \
   meld \
   neofetch \
-  poetry \
-  pyenv \
-  python3 \
-  python-certifi \
   rclone \
   tldr \
   tree \
   watch
-
-pip3 install pypdf
-
-poetry config virtualenvs.in-project true
