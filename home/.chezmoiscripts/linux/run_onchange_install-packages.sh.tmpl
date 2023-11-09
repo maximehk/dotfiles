@@ -1,7 +1,9 @@
 #!/bin/sh
 
 sudo apt update
-sudo apt install -y bzip2 curl detox git htop jq mc mplayer moreutils myrepos ncdu nmap perl tcpdump tcpreplay terminator tmux tree unzip vcsh vim zip zsh
+sudo apt install -y bzip2 curl detox git htop jq mc mplayer moreutils \
+       myrepos ncdu nmap perl python3 python3-pip python3-poetry python3-pypdf \
+       tcpdump tcpreplay terminator tmux tree unzip vcsh vim zip zsh
 
 
 {{ if .desktop -}}
