@@ -7,6 +7,7 @@ brew install \
   fzf \
   htop \
   meld \
+  neofetch \
   poetry \
   pyenv \
   python3 \
