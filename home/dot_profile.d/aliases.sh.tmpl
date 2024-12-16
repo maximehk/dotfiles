@@ -15,6 +15,10 @@ alias cm='chezmoi'
 alias python='python3'
 alias pip='pip3'
 
+alias gstart='gcloud compute instances start'
+alias gstop='gcloud compute instances stop'
+alias gssh='gcloud compute ssh'
+
 # Display time in a different timezone
 function syd  { TZ="Australia/Sydney" date $@ +'%F %T %Z' ; }
 function tok  { TZ="Asia/Tokyo" date $@ +'%F %T %Z' ; }
@@ -47,6 +51,7 @@ br() { xrandr 2> /dev/null | perl -lane 'if (/(\S+) connected/) {print $1}' | xa
 {{-   if eq .chezmoi.os "darwin" }}
 
 alias chrome='open -a '\''Google Chrome'\'
+worknotes_delete_empty() { find /Users/maximeh/Documents/work_notes/ -size 0 -type f -print0 | xargs -0 rm }
 
 {{- end }}
 
