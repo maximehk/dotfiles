@@ -1,6 +1,11 @@
 # Enable persistent connection multiplexing
 
 {{ if .work -}}
+
+Host vmax.c.googlers.com
+  HostName vmax.c.googlers.com
+
+
 Host *.c.googlers.com
   ControlMaster auto
   ControlPath ~/.ssh/%r@%h:%p
