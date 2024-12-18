@@ -1,4 +1,4 @@
-tbot_send() {
+tsend () {
   curl -X POST \
        -H "Content-Type:multipart/form-data" \
        -F chat_id=$TELEGRAM_CHAT_ID \
