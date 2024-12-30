@@ -6,7 +6,6 @@ brew install \
   curl \
   fzf \
   htop \
-  meld \
   neofetch \
   rclone \
   tldr \
