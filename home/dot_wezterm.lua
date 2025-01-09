@@ -1,26 +1,37 @@
--- Pull in the wezterm API
 local wezterm = require 'wezterm'
-
--- This will hold the configuration.
 local config = wezterm.config_builder()
+local act = wezterm.action
 
 config.initial_rows = 80
-config.initial_cols = 120
+config.initial_cols = 160
+config.font_size = 15
 
--- For example, changing the color scheme:
 config.color_scheme = 'Snazzy'
 -- config.color_scheme = 'Pure'
 
-config.font = wezterm.font 'Fira Code'
--- You can specify some parameters to influence the font selection;
--- for example, this selects a Bold, Italic font variant.
 config.font =
-  wezterm.font('JetBrains Mono', { 
+wezterm.font('JetBrains Mono', { 
     weight = 'Bold',
     --  italic = false
 })
-config.font_size = 15
+-- config.font = wezterm.font 'Fira Code'
+config.keys = {
+    {
+      key = 'T',
+      mods = 'CTRL|SHIFT',
+      action = act.PromptInputLine {
+        description = 'Enter new name for tab',
+        action = wezterm.action_callback(function(window, pane, line)
+          -- line will be `nil` if they hit escape without entering anything
+          -- An empty string if they just hit enter
+          -- Or the actual line of text they wrote
+          if line then
+            window:active_tab():set_title(line)
+          end
+        end),
+      },
+    },
+  }
 
 config.window_background_opacity = .9
--- and finally, return the configuration to wezterm
 return config
