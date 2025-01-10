@@ -26,6 +26,7 @@ set -eufo pipefail
      "tree"
      "watch"
      "wget" -}}
+
 {{ $casks := list
      "1password-cli"
      "google-chrome"
@@ -35,6 +36,17 @@ set -eufo pipefail
      "vlc"
      "wezterm"
      "whatsapp" -}}
+
+{{- if .work -}}
+     {{ $casks = list
+          "1password-cli"
+          "google-chrome"
+          "rectangle"
+          "visual-studio-code"
+          "vlc"
+          "wezterm" -}}
+{{ end -}}
+
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) -}}
