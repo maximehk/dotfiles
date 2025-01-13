@@ -33,5 +33,5 @@ config.keys = {
     },
   }
 
-config.window_background_opacity = .9
+--config.window_background_opacity = .9
 return config
