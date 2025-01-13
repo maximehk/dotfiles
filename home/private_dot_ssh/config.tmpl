@@ -1,20 +1,21 @@
 # Enable persistent connection multiplexing
 
-{{ if .work -}}
-
-Host vmax.c.googlers.com
-  HostName vmax.c.googlers.com
-
-
-Host *.c.googlers.com
+Host *
   ControlMaster auto
-  ControlPath ~/.ssh/%r@%h:%p
+  ControlPath ~/.ssh/cm_%r@%h:%p
   ControlPersist 10800
-{{ end }}
+
+{{ if .work -}}
+Host vmax vm
+  HostName vmax.c.googlers.com
+{{- end }}
+
+
+Host home
+  Hostname {{.home_dns_alias}}
+  User max
+  LocalForward 5900 127.0.0.1:5900
 
 Host macmini
   HostName macmini
   User max
-  ControlMaster auto
-  ControlPath ~/.ssh/%r@%h:%p
-  ControlPersist 10800

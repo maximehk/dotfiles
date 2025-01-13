@@ -19,6 +19,8 @@
 {{- $desktop := (eq $osid "darwin") -}}
 
 
+{{ $home_dns_alias := promptString "home dns alias" -}}
+
 [data]
     osid = {{ $osid | quote }}
 
@@ -28,6 +30,7 @@
     install_rust = false
     install_docker = false
 
+    home_dns_alias = {{ $home_dns_alias | quote }}
 
 [git]
     autoAdd = true
