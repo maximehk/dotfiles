@@ -1,0 +1,52 @@
+{{/* boolean feature tags */}}
+{{- $work:= false -}}{{/* true if this machine is on corp */}}
+{{- $desktop:= false -}}
+
+{{- if contains ".google" .chezmoi.fqdnHostname -}}
+  {{- $work = true -}}
+{{- end -}}
+
+{{- if contains ".roam" .chezmoi.fqdnHostname -}}
+  {{- $work = true -}}
+{{- end -}}
+
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{- $has_secrets := (eq $osid "darwin") -}}
+{{- $desktop := (eq $osid "darwin") -}}
+
+
+{{ $home_dns_alias := promptString "home dns alias" -}}
+
+data:
+    osid: {{ $osid | quote }}
+    work: {{ $work }}
+    desktop: {{ $desktop }}
+    has_secrets: {{ $has_secrets }}
+    install_rust: false
+    install_docker: false
+
+    home_dns_alias: {{ $home_dns_alias | quote }}
+
+git:
+    autoAdd: true
+    autoCommit: false
+    autoPush: false
+
+
+diff:
+  command: "code"
+  args:
+    - "--wait"
+    - "--diff"
+    - "{{ `{{ .Destination }}` }}"
+    - "{{ `{{ .Target }}` }}"
+
+merge:
+  command: "bash"
+  args:
+    - "-c"
+    - "cp {{ `{{ .Target }}` }} {{ `{{ .Target }}` }}.base && code --wait --new-window --merge {{ `{{ .Destination }}` }} {{ `{{ .Target  }}` }} {{ `{{ .Target }}` }}.base {{ `{{ .Source }}` }}"
