@@ -3,16 +3,19 @@ name = Max
 email = max@noreply.com
 
 [diff]
-	tool = vimdiff
+tool = vimdiff
 
 [merge]
-	tool = vimdiff.
+tool = vimdiff.
 
 [difftool]
-	prompt = false
+prompt = false
 
 [alias]
-	d = difftool
-	s = status
-  c = commit -a
-  cm = commit -am
+d = difftool
+s = status
+c = commit -a
+cm = commit -am
+
+[pull]
+rebase = true

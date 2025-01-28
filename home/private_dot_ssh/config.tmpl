@@ -4,17 +4,22 @@ Host *
   ControlMaster auto
   ControlPath ~/.ssh/cm_%r@%h:%p
   ControlPersist 10800
+  ServerAliveInterval 120
 
 {{ if .work -}}
 Host vmax vm
   HostName vmax.c.googlers.com
 {{- end }}
 
-
 Host home
   Hostname {{.home_dns_alias}}
   User max
   LocalForward 5900 127.0.0.1:5900
+
+Host home23
+  Hostname {{.home_dns_alias}}
+  Port 23
+  User max
 
 Host macmini
   HostName macmini
