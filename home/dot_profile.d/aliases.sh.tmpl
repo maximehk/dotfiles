@@ -29,6 +29,11 @@ function edt  { TZ="America/New_York" date $@ +'%F %T %Z' ; }
 function d  { TZ="Europe/Paris" date $@ +'%F %T %Z' ; }
 function epoch { date $@ +'%s' ; }
 
+
+function adk_genenv {
+  cm execute-template -f  {{ .chezmoi.sourceDir }}/partials/adk_env.tmpl
+}
+
 # Misc
 alias xclip="xclip -selection c"  # copy stdin to clipboard
 
