@@ -31,7 +31,8 @@ function epoch { date $@ +'%s' ; }
 
 
 function adk_genenv {
-  chezmoi execute-template '{{ template "adk_env" . }}'
+  # Has to be escaped to not be interpreted in `init`
+  echo '{{ ' 'template' ' "adk_env" . }}' | chezmoi execute-template 
 }
 
 # Misc
