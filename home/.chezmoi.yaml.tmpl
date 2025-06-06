@@ -21,7 +21,13 @@
 
 {{ $home_dns_alias := promptString "home dns alias" -}}
 
+
 data:
+    secrets:
+        adk:
+          vault: tptotmecquzpv24ubsnrunhhfu
+          item: fbj5zxcapxn56754ohncb5cm3y
+          
     osid: {{ $osid | quote }}
     work: {{ $work }}
     desktop: {{ $desktop }}
