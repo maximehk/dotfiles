@@ -32,7 +32,7 @@ function epoch { date $@ +'%s' ; }
 
 function adk_genenv {
   # Has to be escaped to not be interpreted in `init`
-  echo '{{ ' 'template' ' "adk_env" . }}' | chezmoi execute-template 
+  TMPL="adk_env" ;  chezmoi execute-template  '{{ template "'$TMPL'"  . }}'
 }
 
 # Misc
