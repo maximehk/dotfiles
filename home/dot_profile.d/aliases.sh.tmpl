@@ -31,7 +31,7 @@ function epoch { date $@ +'%s' ; }
 
 
 function adk_genenv {
-  cm execute-template -f  {{ .chezmoi.workingTree }}/partials/adk_env.tmpl
+  chezmoi execute-template '{{ template "adk_env" . }}'
 }
 
 # Misc

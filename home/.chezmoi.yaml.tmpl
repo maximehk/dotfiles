@@ -1,9 +1,14 @@
 {{/* boolean feature tags */}}
 {{- $work:= false -}}{{/* true if this machine is on corp */}}
 {{- $desktop:= false -}}
+{{- $use_1password:= false -}}
 
 {{- if contains ".google" .chezmoi.fqdnHostname -}}
   {{- $work = true -}}
+{{- end -}}
+
+{{- if eq .osid "darwin" -}}
+  {{- $use_1password = true -}}
 {{- end -}}
 
 {{- if contains ".roam" .chezmoi.fqdnHostname -}}
@@ -21,27 +26,29 @@
 
 {{- $vault_1password:= "tptotmecquzpv24ubsnrunhhfu" -}}
 
-{{ if eq .osid "darwin" -}}
-  {{- $home_dns_alias := (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).home_dns_name.value -}}
+
+{{- $home_dns := "" }}
+{{ if $use_1password -}}
+  {{- $home_dns = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).home_dns_name.value -}}
 {{- else -}}
-  {{- $home_dns_alias := promptString "home dns alias" -}}
-{{- end }}
+  {{- $home_dns = promptString "home dns alias" -}}
+{{ end -}}
 
 
 data:
-    secrets:
-        adk:
-          vault: $vault_1password
-          item: fbj5zxcapxn56754ohncb5cm3y
-          
+    adk:
+        vault: $vault_1password
+        item: fbj5zxcapxn56754ohncb5cm3y
+        
     osid: {{ $osid | quote }}
     work: {{ $work }}
+    use_1password: {{ $use_1password }}
     desktop: {{ $desktop }}
     has_secrets: {{ $has_secrets }}
     install_rust: false
     install_docker: false
 
-    home_dns_alias: {{ $home_dns_alias | quote }}
+    home_dns_alias: {{ $home_dns | quote }}
 
 git:
     autoAdd: true
