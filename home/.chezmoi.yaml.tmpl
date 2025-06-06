@@ -19,8 +19,7 @@
 {{- $desktop := (eq $osid "darwin") -}}
 
 
-{{ $home_dns_alias := promptString "home dns alias" -}}
-
+{{ $home_dns_alias := (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" "tptotmecquzpv24ubsnrunhhfu" ).home_dns_name.value -}}
 
 data:
     secrets:
