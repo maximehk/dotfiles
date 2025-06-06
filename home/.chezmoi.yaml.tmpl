@@ -28,7 +28,11 @@
 
 
 {{- $home_dns := "" }}
+<<<<<<< HEAD
 {{ if $use_1password -}}
+=======
+{{ if eq .osid "darwin" -}}
+>>>>>>> 2f81af9686dc26010528336aff908ca40599b28c
   {{- $home_dns = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).home_dns_name.value -}}
 {{- else -}}
   {{- $home_dns = promptString "home dns alias" -}}
