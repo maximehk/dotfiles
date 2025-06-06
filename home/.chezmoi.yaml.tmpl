@@ -21,19 +21,20 @@
 
 {{- $vault_1password:= "tptotmecquzpv24ubsnrunhhfu" -}}
 
+
+{{- $home_dns := "" }}
 {{ if eq .osid "darwin" -}}
-  {{- $home_dns_alias := (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).home_dns_name.value -}}
+  {{- $home_dns = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).home_dns_name.value -}}
 {{- else -}}
-  {{- $home_dns_alias := promptString "home dns alias" -}}
-{{- end }}
+  {{- $home_dns = promptString "home dns alias" -}}
+{{ end -}}
 
 
 data:
-    secrets:
-        adk:
-          vault: $vault_1password
-          item: fbj5zxcapxn56754ohncb5cm3y
-          
+    adk:
+        vault: $vault_1password
+        item: fbj5zxcapxn56754ohncb5cm3y
+        
     osid: {{ $osid | quote }}
     work: {{ $work }}
     desktop: {{ $desktop }}
@@ -41,7 +42,7 @@ data:
     install_rust: false
     install_docker: false
 
-    home_dns_alias: {{ $home_dns_alias | quote }}
+    home_dns_alias: {{ $home_dns | quote }}
 
 git:
     autoAdd: true
