@@ -1,15 +1,11 @@
-<<<<<<< HEAD
 {{ if .use_1password -}}
 
-=======
->>>>>>> 2f81af9686dc26010528336aff908ca40599b28c
 GOOGLE_GENAI_USE_VERTEXAI=0
 
 GOOGLE_API_KEY={{ (onepasswordItemFields .adk.item).api_key.value }}
 
 GOOGLE_CLOUD_PROJECT={{ (onepasswordItemFields .adk.item).cloud_project_name.value }}
 GOOGLE_CLOUD_LOCATION={{ (onepasswordItemFields .adk.item).cloud_project_zone.value }}
-<<<<<<< HEAD
 
 {{- else -}}
 
@@ -21,5 +17,3 @@ GOOGLE_CLOUD_PROJECT=...
 GOOGLE_CLOUD_LOCATION=us-central1
 
 {{- end -}}
-=======
->>>>>>> 2f81af9686dc26010528336aff908ca40599b28c
