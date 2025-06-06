@@ -19,12 +19,19 @@
 {{- $desktop := (eq $osid "darwin") -}}
 
 
-{{ $home_dns_alias := (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" "tptotmecquzpv24ubsnrunhhfu" ).home_dns_name.value -}}
+{{- $vault_1password:= "tptotmecquzpv24ubsnrunhhfu" -}}
+
+{{ if eq .osid "darwin" -}}
+  {{- $home_dns_alias := (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).home_dns_name.value -}}
+{{- else -}}
+  {{- $home_dns_alias := promptString "home dns alias" -}}
+{{- end }}
+
 
 data:
     secrets:
         adk:
-          vault: tptotmecquzpv24ubsnrunhhfu
+          vault: $vault_1password
           item: fbj5zxcapxn56754ohncb5cm3y
           
     osid: {{ $osid | quote }}
