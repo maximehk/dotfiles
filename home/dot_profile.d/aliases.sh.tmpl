@@ -30,11 +30,6 @@ function d  { TZ="Europe/Paris" date $@ +'%F %T %Z' ; }
 function epoch { date $@ +'%s' ; }
 
 
-function adk_genenv {
-  # Has to be escaped to not be interpreted in `init`
-  TMPL="adk_env" ;  chezmoi execute-template  '{{ template "'$TMPL'"  . }}'
-}
-
 # Misc
 alias xclip="xclip -selection c"  # copy stdin to clipboard
 
