@@ -18,7 +18,13 @@ Host home
   ForwardAgent yes
   IdentityAgent "{{.chezmoi.homeDir}}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
-
+{{ if .chrugi_domain -}}
+Host sv
+  HostName sv.lan.{{.chrugi_domain}}
+  User max
+  ProxyJump home
+  IdentityAgent "{{.chezmoi.homeDir}}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{{- end }}
 
 Host macmini
   HostName macmini

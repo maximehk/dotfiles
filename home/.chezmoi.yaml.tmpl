@@ -28,8 +28,11 @@
 
 
 {{- $home_dns := "" }}
+{{- $chrugi_domain := "" }}
+
 {{ if $use_1password -}}
   {{- $home_dns = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).home_dns_name.value -}}
+  {{- $chrugi_domain = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).chrugi_domain.value -}}
 {{- else -}}
   {{- $home_dns = promptString "home dns alias" -}}
 {{ end -}}
@@ -49,6 +52,7 @@ data:
     install_docker: false
 
     home_dns_alias: {{ $home_dns | quote }}
+    chrugi_domain: {{ $chrugi_domain | quote }}
 
 git:
     autoAdd: true
