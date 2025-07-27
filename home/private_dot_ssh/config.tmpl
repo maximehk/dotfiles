@@ -5,7 +5,9 @@ Host *
   ControlPersist 10800
   ServerAliveInterval 120
 
-{{ if .ssh_agent_sock -}}
+{{ if and .work .desktop -}}
+
+{{- if .ssh_agent_sock -}}
 Host github.com
   IdentityFile ~/.ssh/home.pub
   IdentitiesOnly yes
@@ -13,7 +15,6 @@ Host github.com
   User git
 {{- end }}
 
-{{ if and .work .desktop -}}
 Host vm
   HostName vmax.c.googlers.com
 
@@ -36,8 +37,8 @@ Host sv
   User max
   ProxyJump home
   IdentityAgent "{{.ssh_agent_sock}}"
-{{- end }}
-{{- end }}
+{{- end -}} 
+{{- end }} {{/* end .work .desktop */}}
 
 {{ if not .work -}}
 {{ if .chrugi_domain -}}
