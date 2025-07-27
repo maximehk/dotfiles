@@ -2,6 +2,7 @@
 {{- $work:= false -}}{{/* true if this machine is on corp */}}
 {{- $desktop:= false -}}
 {{- $use_1password:= false -}}
+{{- $osid := .chezmoi.os -}}
 
 {{- if contains ".google" .chezmoi.fqdnHostname -}}
   {{- $work = true -}}
@@ -16,7 +17,6 @@
 {{- end -}}
 
 
-{{- $osid := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
@@ -51,7 +51,7 @@ data:
     adk:
         vault: $vault_1password
         item: fbj5zxcapxn56754ohncb5cm3y
-        
+
     osid: {{ $osid | quote }}
     work: {{ $work }}
     use_1password: {{ $use_1password }}
