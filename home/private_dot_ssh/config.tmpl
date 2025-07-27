@@ -47,6 +47,7 @@ Host sv
   User max
 {{- end }}
 
+{{ if eq .chezmoi.hostname "m4" -}}
 Host macmini
   HostName macmini
   User max
@@ -54,5 +55,6 @@ Host macmini
 Host mt
   HostName mt
   User max
-
 {{- end -}}
+
+{{- end -}}{{/* end .work */}}
