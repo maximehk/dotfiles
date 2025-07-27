@@ -1,35 +1,60 @@
 # Enable persistent connection multiplexing
-
 Host *
   ControlMaster auto
-  ControlPath ~/.ssh/cm_%r@%h:%p
+  ControlPath ~/.ssh/z_cm_%r@%h:%p
   ControlPersist 10800
   ServerAliveInterval 120
 
-{{ if .work -}}
-Host vmax vm
-  HostName vmax.c.googlers.com
+{{ if .ssh_agent_sock -}}
+Host github.com
+  IdentityFile ~/.ssh/home.pub
+  IdentitiesOnly yes
+  IdentityAgent "{{.ssh_agent_sock}}"
+  User git
 {{- end }}
+
+{{ if and .work .desktop -}}
+Host vm
+  HostName vmax.c.googlers.com
 
 Host home
   Hostname {{.home_dns_alias}}
   User max
   LocalForward 5900 127.0.0.1:5900
   ForwardAgent yes
-  IdentityAgent "{{.chezmoi.homeDir}}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  IdentityAgent "{{.ssh_agent_sock}}"
+
+Host mt
+  HostName 192.168.99.1
+  User max
+  ProxyJump home
+  IdentityAgent "{{.ssh_agent_sock}}"
 
 {{ if .chrugi_domain -}}
 Host sv
   HostName sv.lan.{{.chrugi_domain}}
   User max
   ProxyJump home
-  IdentityAgent "{{.chezmoi.homeDir}}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  IdentityAgent "{{.ssh_agent_sock}}"
+{{- end }}
+
+{{- end }}
+
+{{ if not .work -}}
+
+{{ if .chrugi_domain -}}
+Host sv
+  HostName sv.lan.{{.chrugi_domain}}
+  User max
+  IdentityAgent "{{.ssh_agent_sock}}"
 {{- end }}
 
 Host macmini
   HostName macmini
   User max
 
-Host m4
-  HostName 192.168.99.195
+Host mt
+  HostName mt
   User max
+
+{{- end }}

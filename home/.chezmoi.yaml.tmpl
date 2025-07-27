@@ -7,13 +7,14 @@
   {{- $work = true -}}
 {{- end -}}
 
+{{- if contains ".roam" .chezmoi.fqdnHostname -}}
+  {{- $work = true -}}
+{{- end -}}
+
 {{- if eq .osid "darwin" -}}
   {{- $use_1password = true -}}
 {{- end -}}
 
-{{- if contains ".roam" .chezmoi.fqdnHostname -}}
-  {{- $work = true -}}
-{{- end -}}
 
 {{- $osid := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
@@ -23,9 +24,17 @@
 {{- $has_secrets := (eq $osid "darwin") -}}
 {{- $desktop := (eq $osid "darwin") -}}
 
+{{- $ssh_agent_sock := "" -}}
+{{- if $use_1password -}}
+  {{- if eq .chezmoi.os "linux" }}
+    {{-  $ssh_agent_sock = printf "%s/%s" .chezmoi.homeDir ".1password/agent.sock" -}}
+  {{- end -}}
+  {{- if eq .chezmoi.os "darwin" -}}
+    {{-  $ssh_agent_sock = printf "%s/%s" .chezmoi.homeDir "Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock" -}}
+  {{- end -}}
+{{- end -}}
 
 {{- $vault_1password:= "tptotmecquzpv24ubsnrunhhfu" -}}
-
 
 {{- $home_dns := "" }}
 {{- $chrugi_domain := "" }}
@@ -53,6 +62,7 @@ data:
 
     home_dns_alias: {{ $home_dns | quote }}
     chrugi_domain: {{ $chrugi_domain | quote }}
+    ssh_agent_sock: {{ $ssh_agent_sock | quote }}
 
 git:
     autoAdd: true
