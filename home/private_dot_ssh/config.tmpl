@@ -38,7 +38,7 @@ Host sv
   ProxyJump home
   IdentityAgent "{{.ssh_agent_sock}}"
 {{- end -}}
-{{- end }} {{/* end .work .desktop */}}
+{{- end }}{{/* end .work .desktop */}}
 
 {{ if not .work -}}
 {{ if .chrugi_domain -}}
@@ -55,4 +55,4 @@ Host mt
   HostName mt
   User max
 
-{{- end }}
+{{- end -}}
