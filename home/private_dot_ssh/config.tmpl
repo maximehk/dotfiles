@@ -15,11 +15,10 @@ Host home
   Hostname {{.home_dns_alias}}
   User max
   LocalForward 5900 127.0.0.1:5900
+  ForwardAgent yes
+  IdentityAgent "{{.chezmoi.homeDir}}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
-Host home23
-  Hostname {{.home_dns_alias}}
-  Port 23
-  User max
+
 
 Host macmini
   HostName macmini
