@@ -37,16 +37,13 @@ Host sv
   ProxyJump home
   IdentityAgent "{{.ssh_agent_sock}}"
 {{- end }}
-
 {{- end }}
 
 {{ if not .work -}}
-
 {{ if .chrugi_domain -}}
 Host sv
   HostName sv.lan.{{.chrugi_domain}}
   User max
-  IdentityAgent "{{.ssh_agent_sock}}"
 {{- end }}
 
 Host macmini
