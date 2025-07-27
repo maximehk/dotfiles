@@ -78,6 +78,7 @@ call plug#begin()
 
 " https://github.com/rust-lang/rust.vim
 Plug 'rust-lang/rust.vim'
+Plug 'NoahTheDuke/vim-just'
 
 call plug#end()
 

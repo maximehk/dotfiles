@@ -2,9 +2,11 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 local act = wezterm.action
 
+config.audible_bell = "Disabled"
 config.initial_rows = 80
 config.initial_cols = 160
 config.font_size = 15
+
 
 config.color_scheme = 'Snazzy'
 -- config.color_scheme = 'Pure'
