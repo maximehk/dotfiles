@@ -1,7 +1,4 @@
-{{- if not .work -}}
 #!/bin/bash
 
-# sudo perl -i -pane 's/(auth\s+)required(.*)/\1sufficient\2/' /etc/pam.d/chsh
-# chsh -s $(which zsh) ${USER}
-
-{{- end -}}
+grep fish /etc/shells > /dev/null || (which fish > /dev/null  && echo $(which fish) | sudo tee -a  /etc/shells)
+which fish > /dev/null  && chsh -s $(which fish) ${USER}

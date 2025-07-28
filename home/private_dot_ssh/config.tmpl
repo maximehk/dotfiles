@@ -24,6 +24,7 @@ Host home
   LocalForward 5900 127.0.0.1:5900
   ForwardAgent yes
   IdentityAgent "{{.ssh_agent_sock}}"
+  IdentityFile ~/.ssh/home.pub
 
 Host mt
   HostName 192.168.99.1

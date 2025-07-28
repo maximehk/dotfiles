@@ -12,12 +12,14 @@ config.color_scheme = 'Snazzy'
 -- config.color_scheme = 'Pure'
 
 config.font =
-wezterm.font('JetBrains Mono', { 
+wezterm.font('JetBrains Mono', {
     weight = 'Bold',
     --  italic = false
 })
 -- config.font = wezterm.font 'Fira Code'
 config.keys = {
+      -- We're mapping CMD-L to send the string "ls -l" followed by a newline (Enter)
+    { key = 'l', mods = 'CMD', action = act.SendString('ls -l\n') },
     {
       key = 'T',
       mods = 'CTRL|SHIFT',
