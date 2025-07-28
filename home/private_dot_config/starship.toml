@@ -33,16 +33,16 @@ disabled = false
 [hostname]
 ssh_only = false
 format = '[@$hostname](bg:#9A348E)'
-trim_at = '.roam'
+trim_at = '.c.'
 disabled = false
-aliases = {  "maximeh-macbookpro3"  =  "MacBook" }
+aliases = { "maximeh-macbookpro2" = "MacBook", "maximeh-macbookpro3" = "MacBook" }
 
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 [os]
 style = "bg:#9A348E"
-disabled = true # Disabled by default
+disabled = true      # Disabled by default
 
 [directory]
 style = "bg:#DA627D"
@@ -63,16 +63,6 @@ truncate_to_repo = false
 # will not be replaced, because "Documents" was already substituted before.
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important 󰈙 " = " 󰈙 "
-
-[c]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[cpp]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
 symbol = " "
@@ -101,7 +91,6 @@ style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 
-
 [rust]
 symbol = ""
 style = "bg:#86BBD8"
@@ -110,6 +99,6 @@ format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
-time_format = "%R" # Hour:Minute Format
+time_format = "%R"             # Hour:Minute Format
 style = "bg:#33658A"
 format = '[ ♥ $time ]($style)'
