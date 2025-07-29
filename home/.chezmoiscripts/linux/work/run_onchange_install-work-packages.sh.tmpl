@@ -1,11 +1,12 @@
 {{ if .work  -}}
 #!/bin/sh
 
+sudo glinux-add-repo -b fish-google
 sudo glinux-add-repo -b gosso stable
 sudo glinux-add-repo -b sendgmr stable
 sudo glinux-add-repo -b drive-fs-all stable
 sudo apt-get update
 
-sudo apt-get install -y git-remote-google sendgmr drive-fs gosso cidermux
+sudo apt-get install -y git-remote-google sendgmr drive-fs gosso cidermux fish-google-config
 
 {{- end }}

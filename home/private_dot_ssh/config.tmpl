@@ -26,7 +26,17 @@ Host home
   IdentityAgent "{{.ssh_agent_sock}}"
   IdentityFile ~/.ssh/home.pub
 
+Host m4
+  HostName 192.168.99.195
+  User max
+  IdentityAgent "{{.ssh_agent_sock}}"
+
 Host mt
+  HostName 192.168.99.1
+  User max
+  IdentityAgent "{{.ssh_agent_sock}}"
+
+Host wmt
   HostName 192.168.99.1
   User max
   ProxyJump home
@@ -34,6 +44,11 @@ Host mt
 
 {{ if .chrugi_domain -}}
 Host sv
+  HostName sv.lan.{{.chrugi_domain}}
+  User max
+  IdentityAgent "{{.ssh_agent_sock}}"
+
+Host wsv
   HostName sv.lan.{{.chrugi_domain}}
   User max
   ProxyJump home
