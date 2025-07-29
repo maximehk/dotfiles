@@ -23,7 +23,7 @@
 {{- end -}}
 
 {{- $has_secrets := (eq $osid "darwin") -}}
-{{- $desktop = (eq $osid "darwin") -}}
+{{- $desktop := (eq $osid "darwin") -}}
 
 {{- $ssh_agent_sock := "" -}}
 {{- if $use_1password -}}
@@ -43,7 +43,7 @@
 {{ if $use_1password -}}
   {{- $home_dns = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).home_dns_name.value -}}
   {{- $chrugi_domain = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).chrugi_domain.value -}}
-{{- else if not .work_vm -}}
+{{- else if not $work_vm -}}
   {{- $home_dns = promptString "home dns alias" -}}
 {{ end -}}
 
