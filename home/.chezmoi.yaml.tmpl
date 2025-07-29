@@ -2,7 +2,6 @@
 {{- $work:= false -}}{{/* true if this machine is on corp */}}
 {{- $work_macos:= false -}}
 {{- $work_vm:= false -}}
-{{- $desktop:= false -}}
 {{- $use_1password:= false -}}
 {{- $osid := .chezmoi.os -}}
 
@@ -17,14 +16,14 @@
   {{- $use_1password = true -}}
 {{- end -}}
 
-{{- $work_macos := (and .work (eq .osid "darwin")) }}
+{{- $work_macos = (and .work (eq .osid "darwin")) }}
 
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
 {{- $has_secrets := (eq $osid "darwin") -}}
-{{- $desktop := (eq $osid "darwin") -}}
+{{- $desktop = (eq $osid "darwin") -}}
 
 {{- $ssh_agent_sock := "" -}}
 {{- if $use_1password -}}
