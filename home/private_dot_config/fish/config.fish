@@ -1,4 +1,3 @@
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 # eval /Users/maximeh/opt/anaconda3/bin/conda "shell.fish" "hook" $argv | source
@@ -55,6 +54,9 @@ abbr --add gco git checkout
 
 abbr --add cm chezmoi
 abbr --add cma chezmoi apply
+
+abbr --add dc docker compose
+abbr --add dcup docker compose up -d
 
 abbr --add v nvim
 abbr --add vi nvim
