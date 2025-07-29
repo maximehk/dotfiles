@@ -1,4 +1,4 @@
-{{ if .work_vm }}
+{{- if .work_vm }}
 format = """
 [](#9A348E)\
 $os\
@@ -18,7 +18,7 @@ $docker_context\
 $time\
 [ ](fg:#33658A)\
 """
-{{ else }}
+{{- else -}}
 format = """
 [](#9A348E)\
 $os\
@@ -33,7 +33,7 @@ $docker_context\
 $time\
 [ ](fg:#33658A)\
 """
-{{ end }}
+{{- end }}
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
@@ -47,10 +47,10 @@ style_root = "bg:#9A348E"
 format = '[$user ]($style)'
 disabled = false
 
-
-{{- if not .work_vm }}
+{{ if not .work_vm -}}
 [hostname]
 ssh_only = false
+# format = '[@$hostname](bg:#9A348E)'
 format = '[@$hostname](bg:#9A348E)'
 trim_at = '.roam.'
 disabled = false
@@ -58,11 +58,10 @@ aliases = { "maximeh-macbookpro2" = "MacBook", "maximeh-macbookpro3" = "MacBook"
 {{- else -}}
 [hostname]
 ssh_only = false
-format = '[@$hostname](bg:#9A348E)'
+format = '[⚠️@$hostname](bg:#9A348E)'
 trim_at = '.c.'
 disabled = false
-{{ end -}}
-
+{{- end }}
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
