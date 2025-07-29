@@ -56,6 +56,8 @@ data:
     work: {{ $work }}
     use_1password: {{ $use_1password }}
     desktop: {{ $desktop }}
+    work_macos: {{ and .work (eq .osid "darwin") }}
+    work_vm: {{ and .work (not .desktop) }}
     has_secrets: {{ $has_secrets }}
     install_rust: false
     install_docker: false

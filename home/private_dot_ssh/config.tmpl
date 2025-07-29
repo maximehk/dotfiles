@@ -5,7 +5,7 @@ Host *
   ControlPersist 10800
   ServerAliveInterval 120
 
-{{ if and .work .desktop -}}
+{{ if .work_macos -}}
 
 {{- if .ssh_agent_sock -}}
 Host github.com
@@ -54,7 +54,7 @@ Host wsv
   ProxyJump home
   IdentityAgent "{{.ssh_agent_sock}}"
 {{- end -}}
-{{- end }}{{/* end .work .desktop */}}
+{{- end }}{{/* end .work_macos */}}
 
 {{ if not .work -}}
 {{ if .chrugi_domain -}}
