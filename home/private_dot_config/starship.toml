@@ -35,7 +35,7 @@ ssh_only = false
 format = '[@$hostname](bg:#9A348E)'
 trim_at = '.c.'
 disabled = false
-aliases = { "maximeh-macbookpro2" = "MacBook", "maximeh-macbookpro3" = "MacBook" }
+aliases = { "maximeh-macbookpro2.roam.internal" = "MacBook", "maximeh-macbookpro3.roam.internal" = "MacBook" }
 
 
 # An alternative to the username module which displays a symbol that

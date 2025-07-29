@@ -13,7 +13,6 @@ fish_add_path $HOME/.local/bin
 bind \eL 'ls -l\n'
 # bind \cL 'ls -l\n'
 
-
 function starship_transient_prompt_func
   starship module character
 end
@@ -56,3 +55,7 @@ abbr --add gco git checkout
 
 abbr --add cm chezmoi
 abbr --add cma chezmoi apply
+
+abbr --add v nvim
+abbr --add vi nvim
+abbr --add vim nvim
