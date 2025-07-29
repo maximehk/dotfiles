@@ -43,20 +43,25 @@ set -Ux HOMEBREW_NO_ANALYTICS 1
 
 # Fish abbreviations
 # Abbreviations for GIT
-abbr --add g git
-abbr --add ga git add
-abbr --add gc git commit -m
-abbr --add gs git status
-abbr --add gl git log --oneline --graph --decorate
-abbr --add gp git push
+abbr --add g   git
+abbr --add ga  git add
+abbr --add gc  git commit -m
+abbr --add gs  git status
+abbr --add gl  git log --oneline --graph --decorate
+abbr --add gp  git push
 abbr --add gpl git pull
 abbr --add gco git checkout
 
-abbr --add cm chezmoi
-abbr --add cma chezmoi apply
+# Abbreviations for ChezMoi
+abbr --add cm   chezmoi
+abbr --add cma  chezmoi apply
+abbr --add cmu  chezmoi update
+abbr --add cmua chezmoi update -a
 
+{{- if not .work }}
 abbr --add dc docker compose
 abbr --add dcup docker compose up -d
+{{- end }}
 
 abbr --add v nvim
 abbr --add vim nvim
