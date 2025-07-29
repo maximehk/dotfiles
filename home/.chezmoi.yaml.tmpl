@@ -1,14 +1,15 @@
 {{/* boolean feature tags */}}
 {{- $work:= false -}}{{/* true if this machine is on corp */}}
+{{- $work_macos:= false -}}
+{{- $work_vm:= false -}}
 {{- $desktop:= false -}}
 {{- $use_1password:= false -}}
 {{- $osid := .chezmoi.os -}}
 
-{{- if contains ".google" .chezmoi.fqdnHostname -}}
+{{- if contains ".googlers" .chezmoi.fqdnHostname -}}
   {{- $work = true -}}
-{{- end -}}
-
-{{- if contains ".roam" .chezmoi.fqdnHostname -}}
+  {{- $work_vm = true -}}
+{{ else if contains ".roam" .chezmoi.fqdnHostname -}}
   {{- $work = true -}}
 {{- end -}}
 
@@ -16,6 +17,7 @@
   {{- $use_1password = true -}}
 {{- end -}}
 
+{{- $work_macos := (and .work (eq .osid "darwin")) }}
 
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
@@ -42,7 +44,7 @@
 {{ if $use_1password -}}
   {{- $home_dns = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).home_dns_name.value -}}
   {{- $chrugi_domain = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault_1password ).chrugi_domain.value -}}
-{{- else -}}
+{{- else if not .work_vm -}}
   {{- $home_dns = promptString "home dns alias" -}}
 {{ end -}}
 
@@ -56,8 +58,8 @@ data:
     work: {{ $work }}
     use_1password: {{ $use_1password }}
     desktop: {{ $desktop }}
-    work_macos: {{ and .work (eq .osid "darwin") }}
-    work_vm: {{ and .work (not .desktop) }}
+    work_macos: {{ $work_macos }}
+    work_vm: {{ $work_vm }}
     has_secrets: {{ $has_secrets }}
     install_rust: false
     install_docker: false
