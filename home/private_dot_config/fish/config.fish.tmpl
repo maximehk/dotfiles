@@ -1,7 +1,4 @@
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# eval /Users/maximeh/opt/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
+set -Ux fish_greeting ""
 
 fish_config theme choose Dracula
 
@@ -28,10 +25,14 @@ for f in $HOME/.profile.d/google/*sh
     end
 end
 
-
 # Core Editor Settings
+{{- if .desktop }}
 set -Ux VISUAL code --wait
-set -Ux EDITOR $VISUAL # Often good practice to set EDITOR to VISUAL
+set -Ux EDITOR nvim
+{{- else -}}
+set -Ux VISUAL nvim
+set -Ux EDITOR nvim
+{{- end }}
 
 # Locale settings
 set -Ux LANG en_US.UTF-8
@@ -65,3 +66,7 @@ abbr --add dcup docker compose up -d
 
 abbr --add v nvim
 abbr --add vim nvim
+
+# This is still required because of fish suggestions
+alias vi='nvim'
+alias vim='nvim'
