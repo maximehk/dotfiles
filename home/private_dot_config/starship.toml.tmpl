@@ -50,17 +50,17 @@ disabled = false
 {{ if not .work -}}
 [hostname]
 ssh_only = false
-format = '[@$hostname](bg:#9A348E)'
+format = '[🏠 @$hostname](bg:#9A348E)'
 disabled = false
 {{- else if .work_macos -}}
 [hostname]
 ssh_only = false
-format = '[⚠️@macbook](bg:#9A348E)'
+format = '[@macbook](bg:#9A348E)'
 disabled = false
 {{- else -}}
 [hostname]
 ssh_only = false
-format = '[⚠️⚠️⚠️@$hostname](bg:#9A348E)'
+format = '[⚠️ @$hostname](bg:#9A348E)'
 trim_at = '.c.'
 disabled = false
 {{- end }}
