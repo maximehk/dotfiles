@@ -1,4 +1,11 @@
 bind C-b detach
 
+{{ if eq .osid "darwin" -}}
+set-option -g default-shell /opt/homebrew/bin/fish
+{{- else -}}
+set-option -g default-shell /usr/bin/fish
+{{- end }}
+
+
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
 set -g mouse on
