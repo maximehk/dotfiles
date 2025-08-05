@@ -37,7 +37,7 @@ set -Ux EDITOR nvim
 # Locale settings
 set -Ux LANG en_US.UTF-8
 set -Ux PAGER less
-set -Ux LESS "-R"
+set -Ux LESS "-R --quit-if-one-screen"
 
 # Homebrew Analytics Opt-out
 set -Ux HOMEBREW_NO_ANALYTICS 1
@@ -56,20 +56,15 @@ abbr --add gco git checkout
 # Abbreviations for ChezMoi
 abbr --add cm   chezmoi
 abbr --add cma  chezmoi apply
-abbr --add cmu  chezmoi update
-abbr --add cmua chezmoi update -a
+abbr --add cmu  chezmoi update -a
+abbr --add cme chezmoi edit -a
 
 {{- if not .work }}
 abbr --add dc docker compose
 abbr --add dcup docker compose up -d
 {{- end }}
 
-abbr --add v nvim
-abbr --add vim nvim
-
-# This is still required because of fish suggestions
-alias vi='nvim'
+abbr --add v vim
 alias vim='nvim'
 
-abbr tn='tmux new -t'
-abbr ta='tmux attach -t'
+abbr --add tmx 'tmux new-session -A -t'
