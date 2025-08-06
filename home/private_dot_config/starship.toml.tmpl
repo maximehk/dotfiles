@@ -1,39 +1,55 @@
 {{- if .work_vm }}
 format = """
-[](#9A348E)\
-$os\
+[](c1)\
+${custom.env}\
 $hostname\
-[](bg:#DA627D fg:#9A348E)\
+[](bg:c2 fg:c1)\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
+[](fg:c2 bg:c3)\
 $git_branch\
 $git_status\
-[](fg:#FCA17D bg:#86BBD8)\
+[](fg:c3 bg:c4)\
 $c\
 $golang\
 $rust\
-[](fg:#86BBD8 bg:#06969A)\
+[](fg:c4 bg:c5)\
 $docker_context\
-[](fg:#06969A bg:#33658A)\
+[](fg:c5 bg:c6)\
 $time\
-[ ](fg:#33658A)\
+[ ](fg:c6)\
 """
 {{- else -}}
 format = """
-[](#9A348E)\
-$os\
+[](c1)\
+${custom.env}\
 $hostname\
-[](bg:#DA627D fg:#9A348E)\
+[](bg:c2 fg:c1)\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
-[](fg:#FCA17D bg:#86BBD8)\
-[](fg:#86BBD8 bg:#06969A)\
-$docker_context\
-[](fg:#06969A bg:#33658A)\
+[](fg:c2 bg:c3)\
+[](fg:c3 bg:c4)\
+[](fg:c4 bg:c5)\
 $time\
-[ ](fg:#33658A)\
+[ ](fg:c6)\
 """
 {{- end }}
+
+
+palette = 'main'
+
+[palettes.main]
+c1 = '#9A348E'
+c2 = '#FCA17D'
+c3 = '#86BBD8'
+c4 = '#06969A'
+c5 = '#33658A'
+c6 = '#33658A'
+
+
+[custom.env]
+command = "chezmoi execute-template '{{if .work_vm}}🚨{{else if .work_macos}}💼{{else}}⾕{{end}}'"
+when = "which chezmoi > /dev/null"
+format = '[$output ](bg:c1)'
+
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
@@ -42,37 +58,30 @@ $time\
 # and use the os module below
 [username]
 show_always = true
-style_user = "bg:#9A348E"
-style_root = "bg:#9A348E"
+style_user = "bg:c1"
+style_root = "bg:c1"
 format = '[$user ]($style)'
 disabled = false
 
-{{ if not .work -}}
 [hostname]
 ssh_only = false
-format = '[🏠 @$hostname](bg:#9A348E)'
 disabled = false
-{{- else if .work_macos -}}
-[hostname]
-ssh_only = false
-format = '[@macbook](bg:#9A348E)'
-disabled = false
+{{ if .work_macos -}}
+format = '[@macbook](bg:c1)'
 {{- else -}}
-[hostname]
-ssh_only = false
-format = '[⚠️ @$hostname](bg:#9A348E)'
+format = '[@$hostname](bg:c1)'
 trim_at = '.c.'
-disabled = false
 {{- end }}
+
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 [os]
-style = "bg:#9A348E"
+style = "bg:c1"
 disabled = true      # Disabled by default
 
 [directory]
-style = "bg:#DA627D"
+style = "bg:c2"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -93,17 +102,17 @@ truncate_to_repo = false
 
 [docker_context]
 symbol = " "
-style = "bg:#06969A"
+style = "bg:c4"
 format = '[ $symbol $context ]($style)'
 
 
 [git_branch]
 symbol = ""
-style = "bg:#FCA17D"
+style = "bg:c2"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#FCA17D"
+style = "bg:c2"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
@@ -127,5 +136,5 @@ format = '[ $symbol ($version) ]($style)'
 [time]
 disabled = false
 time_format = "%R"             # Hour:Minute Format
-style = "bg:#33658A"
+style = "bg:c6"
 format = '[ ♥ $time ]($style)'
