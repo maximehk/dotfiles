@@ -37,7 +37,7 @@ $time\
 palette = 'main'
 
 [palettes.main]
-c1 = '#f093e5'
+c1 = '#f77ebb'
 c2 = '#ffc3ac'
 c3 = '#86BBD8'
 c4 = '#06969A'
@@ -46,7 +46,7 @@ c6 = '#33658A'
 
 
 [custom.env]
-command = "chezmoi execute-template '{{if .work_vm}}🚨{{else if .work_macos}}💼{{else}}⾕{{end}}'"
+command = "chezmoi execute-template '{{if .work_vm}}🚨{{else if .work_macos}}💼{{else}}🏠{{end}}'"
 when = "which chezmoi > /dev/null"
 format = '[$output ](bg:c1)'
 
