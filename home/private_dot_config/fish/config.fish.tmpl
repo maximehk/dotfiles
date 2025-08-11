@@ -26,13 +26,9 @@ for f in $HOME/.profile.d/google/*sh
 end
 
 # Core Editor Settings
-{{- if .desktop }}
-set -Ux VISUAL code --wait
-set -Ux EDITOR nvim
-{{- else -}}
+#set -Ux VISUAL code --wait
 set -Ux VISUAL nvim
 set -Ux EDITOR nvim
-{{- end }}
 
 # Locale settings
 set -Ux LANG en_US.UTF-8
@@ -65,6 +61,12 @@ abbr --add dc docker compose
 abbr --add dcup docker compose up -d
 {{- end }}
 
+{{- if .desktop }}
+function knock
+  eval $(op read 'op://tptotmecquzpv24ubsnrunhhfu/jj2pxn5w4yhffqdgteeqh74jsm/password')
+end
+{{- end }}
+
 abbr --add v vim
 alias vim='nvim'
 
@@ -73,4 +75,5 @@ abbr --add tmx 'tmux new-session -A -t'
 abbr --add j just
 
 abbr --add rl readlink -f
+abbr --add ss ssh
 

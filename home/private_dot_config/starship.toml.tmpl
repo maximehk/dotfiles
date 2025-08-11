@@ -66,12 +66,8 @@ disabled = false
 [hostname]
 ssh_only = false
 disabled = false
-{{ if .work_macos -}}
-format = '[@macbook](bg:c1)'
-{{- else -}}
 format = '[@$hostname](bg:c1)'
-trim_at = '.c.'
-{{- end }}
+aliases =  { "maximeh-macbookpro2" = "macbook2", "maximeh-macbookpro3" = "macbook3" }
 
 
 # An alternative to the username module which displays a symbol that
