@@ -37,6 +37,7 @@ set -eufo pipefail
 
 {{ $casks := list
      "1password-cli"
+     "font-jetbrains-mono-nerd-font"
      "google-chrome"
      "rectangle"
      "sublime-text"
@@ -49,6 +50,7 @@ set -eufo pipefail
 {{- if .work -}}
      {{ $casks = list
           "1password-cli"
+          "font-jetbrains-mono-nerd-font"
           "google-chrome"
           "rectangle"
           "visual-studio-code"
