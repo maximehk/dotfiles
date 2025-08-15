@@ -1,4 +1,7 @@
 set -Ux fish_greeting ""
+function fish_greeting
+    fastfetch
+end
 
 fish_config theme choose Dracula
 
@@ -8,6 +11,8 @@ fish_add_path $HOME/.local/bin
 # bind \t accept-autosuggestion
 bind \eL 'ls -l\n'
 # bind \cL 'ls -l\n'
+bind super-e edit_command_buffer
+
 
 function starship_transient_prompt_func
   starship module character
@@ -26,9 +31,12 @@ for f in $HOME/.profile.d/google/*sh
 end
 
 # Core Editor Settings
-#set -Ux VISUAL code --wait
 set -Ux VISUAL nvim
 set -Ux EDITOR nvim
+
+function fish_upgrade_editor
+  set -Ux VISUAL code --wait
+end
 
 # Locale settings
 set -Ux LANG en_US.UTF-8
@@ -37,6 +45,13 @@ set -Ux LESS "-R --quit-if-one-screen"
 
 # Homebrew Analytics Opt-out
 set -Ux HOMEBREW_NO_ANALYTICS 1
+set -Ux HOMEBREW_AUTO_UPDATE_SECS 86400
+
+{{ if not .use_1password -}}
+function knock
+  eval $(op read "op://Private/knock_function/one_liner")
+end
+{{- end }}
 
 # Fish abbreviations
 # Abbreviations for GIT
@@ -59,12 +74,6 @@ abbr --add cme chezmoi edit -a
 {{- if not .work }}
 abbr --add dc docker compose
 abbr --add dcup docker compose up -d
-{{- end }}
-
-{{- if .desktop }}
-function knock
-  eval $(op read 'op://tptotmecquzpv24ubsnrunhhfu/jj2pxn5w4yhffqdgteeqh74jsm/password')
-end
 {{- end }}
 
 abbr --add v vim

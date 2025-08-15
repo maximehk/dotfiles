@@ -46,9 +46,8 @@ c6 = '#33658A'
 
 
 [custom.env]
-command = "chezmoi execute-template '{{if .work_vm}}🚨{{else if .work_macos}}💼{{else}}🏠{{end}}'"
-when = "which chezmoi > /dev/null"
-format = '[$output ](bg:c1)'
+format = '[{{ if .work_vm }}🚨{{ else if .work_macos }}💼{{ else }}🏠{{ end }} ](bg:c1)'
+when = true
 
 
 # Disable the blank line at the start of the prompt
