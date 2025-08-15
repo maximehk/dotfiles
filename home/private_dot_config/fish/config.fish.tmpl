@@ -11,7 +11,7 @@ fish_add_path $HOME/.local/bin
 # bind \t accept-autosuggestion
 bind \eL 'ls -l\n'
 # bind \cL 'ls -l\n'
-bind super-e edit_command_buffer
+bind alt-e edit_command_buffer
 
 
 function starship_transient_prompt_func
@@ -56,7 +56,7 @@ end
 # Fish abbreviations
 # Abbreviations for GIT
 abbr --add g   git
-abbr --add ga  git add
+abbr --add ga  git add -A
 abbr --add gb  git branch
 abbr --add gc  git commit -m
 abbr --add gs  git status
