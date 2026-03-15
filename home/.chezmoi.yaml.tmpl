@@ -16,7 +16,7 @@
   {{- $use_1password = true -}}
 {{- end -}}
 
-{{- $work_macos = (and .work (eq .osid "darwin")) }}
+{{- $work_macos = (and $work (eq $osid "darwin")) }}
 
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
