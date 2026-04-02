@@ -1,70 +1,9 @@
-function fish_greeting
-    fastfetch
-end
-
-fish_config theme choose Dracula
-
-fish_add_path /opt/homebrew/bin
-fish_add_path $HOME/.local/bin
-
-# bind \t accept-autosuggestion
-# bind \cL 'ls -l\n'
-bind \eL 'ls -l\n'
-bind super-e edit_command_buffer
-
-function starship_transient_prompt_func
-  starship module character
-end
-starship init fish | source
-enable_transience
-
-fzf --fish | source
-zoxide init --cmd cd fish | source
-
-# Core Editor Settings
-set -Ux EDITOR nvim
-set -Ux VISUAL nvim
-
-function fish_upgrade_editor
-  set -Ux VISUAL code --wait
-end
-
-
-# Locale settings
-set -Ux LANG en_US.UTF-8
-set -Ux PAGER less
-set -Ux LESS "-R --quit-if-one-screen"
-
-# Homebrew Analytics Opt-out
-set -Ux HOMEBREW_NO_ANALYTICS 1
-set -Ux HOMEBREW_AUTO_UPDATE_SECS 86400
-
-# Fish abbreviations
-# Abbreviations for GIT
-abbr --add g   git
-abbr --add ga  git add
-abbr --add gc  git commit -m
-abbr --add gs  git status
-abbr --add gl  git log --oneline --graph --decorate
-abbr --add gp  git push
-abbr --add gpl git pull
-abbr --add gco git checkout
-
-# Abbreviations for ChezMoi
-abbr --add cm   chezmoi
-abbr --add cma  chezmoi apply
-abbr --add cmu  chezmoi update -a
-abbr --add cme chezmoi edit -a
-
-abbr --add dc docker compose
-abbr --add dcup docker compose up -d
-
-abbr --add v vim
-alias vim='nvim'
-
-abbr --add tmx 'tmux new-session -A -t'
-
-abbr --add j just
-
-abbr --add rl readlink -f
-
+# Config is split into conf.d/ files:
+#   00-path.fish        — PATH setup
+#   01-env.fish         — environment variables
+#   02-theme.fish       — theme selection
+#   03-prompt.fish      — starship prompt
+#   04-keybindings.fish — key bindings
+#   05-tools.fish       — fzf, zoxide
+#   06-abbreviations.fish — abbreviations & aliases
+#   07-greeting.fish    — greeting function
