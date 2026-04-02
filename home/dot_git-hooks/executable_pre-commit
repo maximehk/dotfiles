@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Scan staged changes for secrets
+gitleaks git --pre-commit --staged --verbose

@@ -1,0 +1,75 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+# source:
+# https://github.com/twpayne/dotfiles/blob/master/home/.chezmoiscripts/darwin/run_onchange_before_install-packages.sh.tmpl
+
+{{ $brews := list
+     "bat"
+     "btop"
+     "curl"
+     "dockutil"
+     "fastfetch"
+     "ffmpeg"
+     "fd"
+     "fish"
+     "fzf"
+     "gdu"
+     "gh"
+     "gitleaks"
+     "git"
+     "go"
+     "git-lfs"
+     "jless"
+     "jq"
+     "just"
+     "node"
+     "pkg-config"
+     "qsv"
+     "rclone"
+     "ripgrep"
+     "rust"
+     "starship"
+     "tldr"
+     "tmux"
+     "tree"
+     "uv"
+     "watch"
+     "wget"
+     "zoxide" -}}
+
+{{ $casks := list
+     "1password-cli"
+     "antigravity"
+     "google-chrome"
+     "maccy"
+     "obsidian"
+     "rectangle"
+     "sublime-text"
+     "telegram"
+     "visual-studio-code"
+     "vlc"
+     "ghostty"
+     "whatsapp" -}}
+
+
+
+brew bundle --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+
+# Remove anything not in the bundle
+# brew bundle cleanup --force --file=/dev/stdin <<EOF
+# {{ range ($brews | sortAlpha | uniq) -}}
+# brew "{{ . }}"
+# {{ end -}}
+# {{ range ($casks | sortAlpha | uniq) -}}
+# cask "{{ . }}"
+# {{ end -}}
+# EOF

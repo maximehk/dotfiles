@@ -1,0 +1,71 @@
+# Enable persistent connection multiplexing
+Host *
+  ControlMaster auto
+  ControlPath ~/.ssh/z_cm_%r@%h:%p
+  ControlPersist 10800
+  ServerAliveInterval 120
+
+{{- if .ssh_agent_sock }}
+
+Host github.com
+  IdentityFile ~/.ssh/home.pub
+  IdentitiesOnly yes
+  IdentityAgent "{{.ssh_agent_sock}}"
+  User git
+
+Host home
+  Hostname {{.home_dns_alias}}
+  User max
+  LocalForward 5900 127.0.0.1:5900
+  ForwardAgent yes
+  IdentityAgent "{{.ssh_agent_sock}}"
+  IdentityFile ~/.ssh/home.pub
+
+Host m4
+  HostName 192.168.99.195
+  User max
+  IdentityAgent "{{.ssh_agent_sock}}"
+
+Host mt
+  HostName 192.168.99.1
+  User max
+  IdentityAgent "{{.ssh_agent_sock}}"
+
+Host wmt
+  HostName 192.168.99.1
+  User max
+  ProxyJump home
+  IdentityAgent "{{.ssh_agent_sock}}"
+
+{{ if .chrugi_domain -}}
+Host sv
+  HostName sv.lan.{{.chrugi_domain}}
+  User max
+  IdentityAgent "{{.ssh_agent_sock}}"
+
+Host wsv
+  HostName sv.lan.{{.chrugi_domain}}
+  User max
+  ProxyJump home
+  IdentityAgent "{{.ssh_agent_sock}}"
+{{- end -}}
+{{- end }}
+
+{{ if not .ssh_agent_sock -}}
+{{ if .chrugi_domain -}}
+Host sv
+  HostName sv.lan.{{.chrugi_domain}}
+  User max
+{{- end }}
+
+{{ if eq .chezmoi.hostname "m4" -}}
+Host macmini
+  HostName macmini
+  User max
+
+Host mt
+  HostName mt
+  User max
+{{- end -}}
+
+{{- end -}}

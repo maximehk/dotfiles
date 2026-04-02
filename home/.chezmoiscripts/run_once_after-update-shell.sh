@@ -1,0 +1,4 @@
+#!/bin/bash
+grep fish /etc/shells > /dev/null || (which fish > /dev/null  && echo $(which fish) | sudo tee -a  /etc/shells)
+which fish > /dev/null  && chsh -s $(which fish) ${USER}
+
