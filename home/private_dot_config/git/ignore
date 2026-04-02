@@ -1,0 +1,20 @@
+# Secrets
+.env
+.env.*
+
+# macOS
+.DS_Store
+._*
+
+# Editors
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Claude
+**/.claude/settings.local.json
+
+# Direnv
+.direnv/

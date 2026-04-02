@@ -1,2 +1,4 @@
-fzf --fish | source
-zoxide init --cmd cd fish | source
+if status is-interactive
+    fzf --fish | source
+    zoxide init --cmd cd fish | source
+end

@@ -1,3 +1,5 @@
-function fish_greeting
-    fastfetch
+if status is-interactive
+    function fish_greeting
+        fastfetch
+    end
 end
