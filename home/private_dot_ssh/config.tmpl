@@ -38,8 +38,8 @@ Host wmt
   IdentityAgent "{{.ssh_agent_sock}}"
 
 Host maniak
-  HostName {{.infomaniak_vps_ip}}
-  User {{.infomaniak_vps_user}}
+  HostName {{ onepasswordRead "op://Personal/infomaniak/vps/ip" }}
+  User {{ onepasswordRead "op://Personal/infomaniak/vps/user" }}
   IdentityAgent "{{.ssh_agent_sock}}"
 
 
