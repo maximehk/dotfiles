@@ -33,6 +33,8 @@ data:
     home_dns_alias: {{ $home_dns | quote }}
     chrugi_domain: {{ $chrugi_domain | quote }}
     ssh_agent_sock: {{ $ssh_agent_sock | quote }}
+    infomaniak_vps_ip: {{ onepasswordRead "op://Personal/infomaniak/vps/ip" }}
+    infomaniak_vps_user: {{ onepasswordRead "op://Personal/infomaniak/vps/user" }}
 
 git:
     autoAdd: true

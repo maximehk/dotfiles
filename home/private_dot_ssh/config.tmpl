@@ -37,6 +37,12 @@ Host wmt
   ProxyJump home
   IdentityAgent "{{.ssh_agent_sock}}"
 
+Host maniak
+  HostName {{.infomaniak_vps_ip}}
+  User {{.infomaniak_vps_user}}
+  IdentityAgent "{{.ssh_agent_sock}}"
+
+
 {{ if .chrugi_domain -}}
 Host sv
   HostName sv.lan.{{.chrugi_domain}}

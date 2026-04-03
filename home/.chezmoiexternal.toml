@@ -8,3 +8,8 @@
     url = "https://github.com/maximehk/nvchad.git"
     refreshPeriod = "168h"
 
+[".gemini/skills/justfile"]
+    type = "git-repo"
+    url = "https://github.com/maximehk/just-skill.git"
+    refreshPeriod = "168h"
+
