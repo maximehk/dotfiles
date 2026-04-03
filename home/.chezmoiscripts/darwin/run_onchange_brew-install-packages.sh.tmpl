@@ -41,21 +41,28 @@ set -eufo pipefail
      "zoxide" -}}
 
 {{ $casks := list
+     {{- /* Development & Terminals */}}
+     "ghostty"
+     "sublime-text"
+     "visual-studio-code"
      "1password-cli"
-     "antigravity"
+
+     {{- /* Browsers & Communication */}}
      "google-chrome"
+     "telegram"
+     "whatsapp"
+
+     {{- /* Productivity & Utilities */}}
      "maccy"
      "obsidian"
      "rectangle"
-     "sublime-text"
-     "telegram"
-     "visual-studio-code"
      "vlc"
+     "antigravity"
+
+     {{- /* Fonts */}}
      "font-hack-nerd-font"
      "font-jetbrains-mono-nerd-font"
-     "ghostty"
-     "whatsapp" -}}
-
+-}}
 
 
 brew bundle --file=/dev/stdin <<EOF
