@@ -40,29 +40,36 @@ set -eufo pipefail
      "wget"
      "zoxide" -}}
 
-{{ $casks := list
-     {{- /* Development & Terminals */}}
+{{- /* Development & Terminals */ -}}
+{{ $casks_dev := list
      "ghostty"
      "sublime-text"
      "visual-studio-code"
-     "1password-cli"
+     "1password-cli" -}}
 
-     {{- /* Browsers & Communication */}}
-     "google-chrome"
-     "telegram"
-     "whatsapp"
+{{- /* Browsers */ -}}
+{{ $casks_browsers := list
+     "google-chrome" -}}
 
-     {{- /* Productivity & Utilities */}}
+{{- /* Productivity & Utilities */ -}}
+{{ $casks_utils := list
      "maccy"
      "obsidian"
      "rectangle"
      "vlc"
-     "antigravity"
+     "antigravity" -}}
 
-     {{- /* Fonts */}}
+{{- /* Fonts */ -}}
+{{ $casks_fonts := list
      "font-hack-nerd-font"
-     "font-jetbrains-mono-nerd-font"
--}}
+     "font-jetbrains-mono-nerd-font" -}}
+
+{{- /* Messaging – remove this block in forks where these aren't needed */ -}}
+{{ $casks_messaging := list
+     "telegram"
+     "whatsapp" -}}
+
+{{ $casks := concat $casks_dev $casks_browsers $casks_utils $casks_fonts $casks_messaging -}}
 
 
 brew bundle --file=/dev/stdin <<EOF
