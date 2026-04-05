@@ -9,7 +9,6 @@ set -eufo pipefail
      "btop"
      "curl"
      "dockutil"
-     "dops"
      "fastfetch"
      "ffmpeg"
      "fd"
@@ -74,9 +73,11 @@ set -eufo pipefail
 
 
 brew bundle --file=/dev/stdin <<EOF
+tap "mikescher/tap"
 {{ range ($brews | sortAlpha | uniq) -}}
 brew "{{ . }}"
 {{ end -}}
+brew "mikescher/tap/dops"
 {{ range ($casks | sortAlpha | uniq) -}}
 cask "{{ . }}"
 {{ end -}}
