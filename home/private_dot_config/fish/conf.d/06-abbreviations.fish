@@ -18,6 +18,7 @@ if status is-interactive
     # Docker
     abbr --add dc   docker compose
     abbr --add dcup docker compose up -d
+    abbr --add dps  'dops --filter "label=com.docker.compose.project=$(basename $PWD)"'
 
     # Editors
     abbr --add v   vim
