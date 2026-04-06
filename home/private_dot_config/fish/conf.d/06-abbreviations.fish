@@ -9,6 +9,9 @@ if status is-interactive
     abbr --add gpl git pull
     abbr --add gco git checkout
 
+    abbr --add lg  lazygit
+
+
     # ChezMoi
     abbr --add cm   chezmoi
     abbr --add cma  chezmoi apply

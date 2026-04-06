@@ -10,6 +10,11 @@
   {{- $ssh_agent_sock = printf "%s/%s" .chezmoi.homeDir "Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock" -}}
 {{- end -}}
 
+{{- $install_messenger_apps := false -}}
+{{- if stdinIsATTY -}}
+{{-   $install_messenger_apps = promptBoolOnce . "install_messenger_apps" "Install messenger apps (WhatsApp, Telegram)" -}}
+{{- end -}}
+
 {{- $vault := "tptotmecquzpv24ubsnrunhhfu" -}}
 
 {{- $home_dns := "" -}}
@@ -33,6 +38,9 @@ data:
     home_dns_alias: {{ $home_dns | quote }}
     chrugi_domain: {{ $chrugi_domain | quote }}
     ssh_agent_sock: {{ $ssh_agent_sock | quote }}
+    install_messenger_apps: {{ $install_messenger_apps }}
+
+    has_docker: false  # switch this manually to install docker utils
 
 git:
     autoAdd: true

@@ -5,6 +5,7 @@ set -eufo pipefail
 # source:
 # https://github.com/twpayne/dotfiles/blob/master/home/.chezmoiscripts/darwin/run_onchange_before_install-packages.sh.tmpl
 
+{{ $taps := list -}}
 {{ $brews := list
      "btop"
      "curl"
@@ -39,45 +40,37 @@ set -eufo pipefail
      "watch"
      "wget"
      "zoxide" -}}
-
-{{- /* Development & Terminals */ -}}
-{{ $casks_dev := list
+{{ $casks := list
+     "1password-cli"
+     "antigravity"
+     "font-hack-nerd-font"
+     "font-jetbrains-mono-nerd-font"
      "ghostty"
-     "sublime-text"
-     "visual-studio-code"
-     "1password-cli" -}}
-
-{{- /* Browsers */ -}}
-{{ $casks_browsers := list
-     "google-chrome" -}}
-
-{{- /* Productivity & Utilities */ -}}
-{{ $casks_utils := list
+     "google-chrome"
      "maccy"
      "obsidian"
      "rectangle"
-     "vlc"
-     "antigravity" -}}
+     "sublime-text"
+     "visual-studio-code"
+     "vlc" -}}
 
-{{- /* Fonts */ -}}
-{{ $casks_fonts := list
-     "font-hack-nerd-font"
-     "font-jetbrains-mono-nerd-font" -}}
+{{- if .has_docker }}
+{{ $taps = append $taps "mikescher/tap" -}}
+{{ $brews = append $brews "mikescher/tap/dops" -}}
+{{- end }}
 
-{{- /* Messaging – remove this block in forks where these aren't needed */ -}}
-{{ $casks_messaging := list
-     "telegram"
-     "whatsapp" -}}
-
-{{ $casks := concat $casks_dev $casks_browsers $casks_utils $casks_fonts $casks_messaging -}}
+{{- if .install_messenger_apps }}
+{{ $casks = concat $casks (list "telegram" "whatsapp") -}}
+{{- end -}}
 
 
 brew bundle --file=/dev/stdin <<EOF
-tap "mikescher/tap"
+{{ range ($taps | sortAlpha | uniq) -}}
+tap "{{ . }}"
+{{ end -}}
 {{ range ($brews | sortAlpha | uniq) -}}
 brew "{{ . }}"
 {{ end -}}
-brew "mikescher/tap/dops"
 {{ range ($casks | sortAlpha | uniq) -}}
 cask "{{ . }}"
 {{ end -}}
