@@ -64,7 +64,7 @@ set -eufo pipefail
 {{- end -}}
 
 
-brew bundle --file=/dev/stdin <<EOF
+/opt/homebrew/bin/brew bundle --file=/dev/stdin <<EOF
 {{ range ($taps | sortAlpha | uniq) -}}
 tap "{{ . }}"
 {{ end -}}
