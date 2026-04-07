@@ -20,12 +20,8 @@
 {{- $home_dns := "" -}}
 {{- $chrugi_domain := "" -}}
 
-{{- if $is_darwin -}}
-  {{- $home_dns = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault).home_dns_name.value -}}
-  {{- $chrugi_domain = (onepasswordItemFields "x2lxtth2uokhbkgkllb25zvnnm" $vault).chrugi_domain.value -}}
-{{- else -}}
-  {{- $home_dns = promptString "home dns alias" -}}
-{{- end -}}
+{{- $home_dns = promptString "home dns alias" -}}
+{{- $chrugi_domain = promptString "chrugi domain (e.g. foo.ch)" -}}
 
 data:
     adk:
