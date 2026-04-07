@@ -16,8 +16,8 @@
 {{- end -}}
 
 {{- $vault := "tptotmecquzpv24ubsnrunhhfu" -}}
-{{- $home_dns := promptString "home dns alias" -}}
-{{- $chrugi_domain := promptString "chrugi domain (e.g. foo.ch)" -}}
+{{- $home_dns := promptStringOnce "home dns alias" -}}
+{{- $chrugi_domain := promptStringOnce "chrugi domain (e.g. foo.ch)" -}}
 
 data:
     adk:
