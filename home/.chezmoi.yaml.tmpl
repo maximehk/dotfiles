@@ -1,6 +1,11 @@
 {{- $is_darwin := eq .chezmoi.os "darwin" -}}
 {{- $osid := .chezmoi.os -}}
 
+{{- $is_work_env := false -}}
+{{- if stdinIsATTY -}}
+{{-   $is_work_env = promptBoolOnce . "is_work_env " "This is a work laptop or server." -}}
+{{- end -}}
+
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
@@ -32,6 +37,8 @@ data:
     ssh_agent_sock: {{ $ssh_agent_sock | quote }}
     install_messenger_apps: {{ $install_messenger_apps }}
 
+    is_work_env: $is_work_env
+  
     has_docker: false  # switch this manually to install docker utils
 
 git:

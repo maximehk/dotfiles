@@ -1,6 +1,10 @@
+{{ if not .is_work_env -}}
+
 #!/bin/bash
 
 set -eufo pipefail
 
 npm install -g \
     @google/gemini-cli
+
+{{- end }}
