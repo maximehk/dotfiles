@@ -2,38 +2,39 @@
 
 sudo apt update
 
+# Core utilities and development tools
 sudo apt install -y \
-       btop \           # system monitor
-       bzip2 \          # compression
-       curl \           # HTTP client
-       detox \          # clean up filenames
-       fastfetch \      # system info display
-       fd-find \        # fast file finder
-       fish \           # shell
-       fzf \            # fuzzy finder
-       gh \             # GitHub CLI
-       git \            # version control
-       glow \           # markdown renderer
-       golang-go \      # Go language
-       htop \           # process viewer
-       jq \             # JSON processor
-       just \           # task runner
-       moreutils \      # sponge, ts, parallel, etc.
-       ncdu \           # disk usage analyzer
-       neovim \         # editor
-       nmap \           # network scanner
-       python3 \        # Python
-       rustup \         # Rust toolchain manager
-       tcpdump \        # packet capture
-       tcpreplay \      # replay pcap files
-       tldr \           # simplified man pages
-       tmux \           # terminal multiplexer
-       tree \           # directory listing
-       unzip \          # decompression
-       zip \            # compression
-       zoxide           # smart cd
+       btop \
+       bzip2 \
+       curl \
+       detox \
+       fastfetch \
+       fd-find \
+       fish \
+       fzf \
+       gh \
+       git \
+       glow \
+       golang-go \
+       htop \
+       jq \
+       just \
+       moreutils \
+       ncdu \
+       neovim \
+       nmap \
+       python3 \
+       rustup \
+       tcpdump \
+       tcpreplay \
+       tldr \
+       tmux \
+       tree \
+       unzip \
+       zip \
+       zoxide
 
-mkdir -p ~/.local/bin ; ln -sf /usr/bin/batcat ~/.local/bin/bat
+mkdir -p ~/.local/bin
 
 # Initialize rustup (installs stable toolchain)
 rustup default stable
@@ -43,4 +44,3 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install starship prompt
 curl -sS https://starship.rs/install.sh | sh -s -- -y
-
