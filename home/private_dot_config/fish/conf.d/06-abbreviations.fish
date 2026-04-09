@@ -1,13 +1,11 @@
 if status is-interactive
     # Git
-    abbr --add g   git
-    abbr --add ga  git add
+    abbr --add ga  git add -A
     abbr --add gc  git commit -m
     abbr --add gs  git status
     abbr --add gl  git log --oneline --graph --decorate
     abbr --add gp  git push
-    abbr --add gpl git pull
-    abbr --add gco git checkout
+    abbr --add gb  git branch
 
     abbr --add lg  lazygit
 
