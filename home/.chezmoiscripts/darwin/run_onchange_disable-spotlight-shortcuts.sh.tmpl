@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -euo pipefail
+
+PLIST="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
+
+echo "Disabling Spotlight keyboard shortcuts..."
+
+# Key 64 = Cmd+Space (Show Spotlight search)
+/usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:64:enabled false" "$PLIST" 2>/dev/null || \
+/usr/libexec/PlistBuddy -c "Add :AppleSymbolicHotKeys:64:enabled bool false" "$PLIST"
+
+# Key 65 = Cmd+Option+Space (Show Finder search window)
+/usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:65:enabled false" "$PLIST" 2>/dev/null || \
+/usr/libexec/PlistBuddy -c "Add :AppleSymbolicHotKeys:65:enabled bool false" "$PLIST"
+
+# Apply changes
+/System/Library/CoreServices/pbs -update
+killall SystemUIServer 2>/dev/null || true
+
+echo "Done. Spotlight shortcuts disabled."
