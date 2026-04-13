@@ -4,7 +4,8 @@ if status is-interactive
     abbr --add gc  git commit -m
     abbr --add gs  git status
     abbr --add gl  git log --oneline --graph --decorate
-    abbr --add gp  git push
+    abbr --add gP  git push
+    abbr --add gp  git pull
     abbr --add gb  git branch
 
     abbr --add lg  lazygit
