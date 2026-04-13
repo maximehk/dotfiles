@@ -1,0 +1,32 @@
+# OS generated files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# IDE/Editor folders
+.vscode/
+.idea/
+*.swp
+
+# Logs and databases
+*.log
+
+# General Secrets & Credentials
+*.env
+*.env.local
+*.env.*.local
+*.pem
+*.key
+*.cert
+*.p12
+*.pfx
+*.crt
+
+# Cloud & CLI Credentials
+.aws/
+.gcp/
+.azure/
+.config/gcloud/
+.netrc
+client*json
