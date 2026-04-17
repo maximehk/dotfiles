@@ -30,4 +30,5 @@ if status is-interactive
     abbr --add tmx 'tmux new-session -A -t'
     abbr --add j   just
     abbr --add rl  readlink -f
+    abbr --add zj zellij
 end

@@ -38,6 +38,9 @@ mkdir -p ~/.local/bin
 
 # Initialize rustup (installs stable toolchain)
 rustup default stable
+cargo install cargo-binstall
+cargo binstall zellij
+zellij setup --generate-completion fish > ~/.config/fish/completions/zellij.fish
 
 # Install uv (Python package manager)
 curl -LsSf https://astral.sh/uv/install.sh | sh
