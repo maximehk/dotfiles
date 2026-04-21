@@ -31,4 +31,6 @@ if status is-interactive
     abbr --add j   just
     abbr --add rl  readlink -f
     abbr --add zj zellij
+    abbr --add za zellij attach
+    abbr --add zc zellij attach --create
 end
