@@ -32,8 +32,9 @@ if status is-interactive
     abbr --add rl  readlink -f
 
     # Zellij stuff
-    abbr --add zj zellij
+    abbr --add z zellij
     abbr --add za zellij attach
     abbr --add zc zellij attach --create
     abbr --add zl zellij list-sessions
+    abbr --add zr zellij run --
 end
