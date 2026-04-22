@@ -23,7 +23,7 @@ if status is-interactive
     abbr --add dps  'dops --filter "label=com.docker.compose.project=$(basename $PWD)"'
 
     # Editors
-    abbr --add v   vim
+    abbr --add v   nvim
     abbr --add vim nvim
 
     # Misc
