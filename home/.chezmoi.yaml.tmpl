@@ -47,12 +47,7 @@ git:
     autoPush: false
 
 diff:
-  command: "code"
-  args:
-    - "--wait"
-    - "--diff"
-    - "{{ `{{ .Destination }}` }}"
-    - "{{ `{{ .Target }}` }}"
+  command: "delta"
 
 merge:
   command: "bash"
