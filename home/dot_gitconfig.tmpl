@@ -3,16 +3,15 @@ name = Max HK
 email = 4649120+maximehk@users.noreply.github.com
 
 [diff]
-tool = code
+tool = delta
 
 [merge]
-tool = code
+tool = delta
 
 [difftool]
 prompt = false
 
 [alias]
-d = code
 s = status
 c = commit -a
 cm = commit -am
@@ -21,8 +20,16 @@ cm = commit -am
 rebase = true
 
 [init]
-defaultBranch = master
+defaultBranch = main
+
+[interactive]
+diffFilter = delta --color-only
+
+[delta]
+navigate = true
+side-by-side = true
 
 [core]
 hooksPath = ~/.git-hooks
 excludesfile = {{.chezmoi.homeDir}}/.gitignore_global
+pager = delta
