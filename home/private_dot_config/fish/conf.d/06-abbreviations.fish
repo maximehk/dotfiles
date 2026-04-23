@@ -35,6 +35,6 @@ if status is-interactive
     abbr --add z zellij
     abbr --add za zellij attach
     abbr --add zc zellij attach --create
-    abbr --add zl zellij list-sessions
+    abbr --add zl 'zellij list-sessions | grep -v EXITED'
     abbr --add zr zellij run --
 end
