@@ -11,7 +11,7 @@ set -gx LESS "-R --quit-if-one-screen"
 set -gx HOMEBREW_NO_ANALYTICS 1
 set -gx HOMEBREW_AUTO_UPDATE_SECS 86400
 
-set -gx TLRC_CONFIG "${HOME}/.config/tlrc/config.toml"
+set -gx TLRC_CONFIG "$HOME/.config/tlrc/config.toml"
 
 # Secrets from ~/.env (not tracked by dotfiles)
 if test -f ~/.env
