@@ -28,7 +28,6 @@ sudo apt install -y \
        rustup \
        tcpdump \
        tcpreplay \
-       tldr \
        tmux \
        tree \
        unzip \
@@ -39,8 +38,13 @@ mkdir -p ~/.local/bin
 
 # Initialize rustup (installs stable toolchain)
 rustup default stable
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 cargo install cargo-binstall
-cargo binstall zellij
+# -y: no confirmation question, so this also works without a keyboard (first boot of a server)
+cargo binstall -y zellij
+# tlrc: the tldr client (Ubuntu has no "tldr" package)
+cargo binstall -y tlrc
+mkdir -p ~/.config/fish/completions
 zellij setup --generate-completion fish > ~/.config/fish/completions/zellij.fish
 
 # Install uv (Python package manager)
