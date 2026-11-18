@@ -21,6 +21,11 @@ Host home
   IdentityAgent "{{.ssh_agent_sock}}"
   IdentityFile ~/.ssh/home.pub
 
+Host nas
+  HostName 192.168.99.8
+  User max
+  IdentityAgent "{{.ssh_agent_sock}}"
+
 Host m4
   HostName 192.168.99.195
   User max
