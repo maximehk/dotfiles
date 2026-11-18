@@ -22,3 +22,9 @@ if test -f ~/.env
         end
     end
 end
+
+# Go: on Linux keep GOPATH out of ~/go, binaries in ~/.local/bin
+if test (uname) = Linux
+    set -gx GOPATH $HOME/.local/share/go
+    set -gx GOBIN $HOME/.local/bin
+end

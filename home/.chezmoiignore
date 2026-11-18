@@ -5,5 +5,5 @@ README.md
 
 {{ if ne .chezmoi.os "darwin" }}
 .chezmoiscripts/darwin/**
-private_Library/**
+Library/**
 {{ end }}

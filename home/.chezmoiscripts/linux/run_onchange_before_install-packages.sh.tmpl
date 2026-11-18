@@ -50,7 +50,8 @@ zellij setup --generate-completion fish > ~/.config/fish/completions/zellij.fish
 # Install uv (Python package manager)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Install scc (source code counter)
+# Install scc (source code counter); keep Go out of ~/go
+export GOPATH="$HOME/.local/share/go" GOBIN="$HOME/.local/bin"
 go install github.com/boyter/scc/v3@latest
 
 # Install starship prompt

@@ -1,5 +1,9 @@
 [cache]
+{{- if eq .chezmoi.os "darwin" }}
 dir = "~/Library/Caches/tlrc"
+{{- else }}
+dir = "~/.cache/tlrc"
+{{- end }}
 mirror = "https://github.com/tldr-pages/tldr/releases/latest/download"
 auto_update = true
 defer_auto_update = true
