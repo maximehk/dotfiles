@@ -55,4 +55,4 @@ export GOPATH="$HOME/.local/share/go" GOBIN="$HOME/.local/bin"
 go install github.com/boyter/scc/v3@latest
 
 # Install starship prompt
-curl -sS https://starship.rs/install.sh | sh -s -- -y
+command -v starship >/dev/null || curl -sS https://starship.rs/install.sh | sh -s -- -y
